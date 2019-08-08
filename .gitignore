@@ -1,3 +1,6 @@
+# Ignore vscode settings
+.vscode/
+
 # Ignore PyProduct output
 output/
 
