@@ -4,7 +4,7 @@ import pyfiglet
 import argparse
 import core.config as config
 
-from core.spider import scrape_products
+from core.scraper import scrape_products
 from termcolor import colored
 
 
@@ -23,11 +23,11 @@ if __name__ == '__main__':
     print(colored(ascii_banner, 'blue'))
     print("By Elgin Beloy\n")
 
-    print(f"{config.SPIDER_INDICATOR} Starting spider scraper...")
+    print(f"{config.SCRAPER_INDICATOR} Starting scraper...")
     products_found = scrape_products(args.website)
 
     # Show user products scraped
-    print(f"{config.SPIDER_INDICATOR} Products scraped:")
+    print(f"{config.SCRAPER_INDICATOR} Products scraped:")
     print('')
     for product in products_found[:config.PRODUCTS_TO_SHOW]:
         print('Name: ' + str(product.get('name', '')))
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print(
         f'... { max(0, len(products_found) - config.PRODUCTS_TO_SHOW) } more results ...\n')
 
-    print(f"{config.SPIDER_INDICATOR} Writing output to {args.output}...")
+    print(f"{config.SCRAPER_INDICATOR} Writing output to {args.output}...")
 
     keys = products_found[0].keys()
     with open(args.output, 'w') as output_file:
@@ -47,4 +47,4 @@ if __name__ == '__main__':
         dict_writer.writeheader()
         dict_writer.writerows(products_found)
 
-    print(f"{config.SPIDER_INDICATOR} Complete!")
+    print(f"{config.SCRAPER_INDICATOR} Complete!")

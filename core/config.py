@@ -1,7 +1,7 @@
 from termcolor import colored
 
-# Text to show before Spider related outputs
-SPIDER_INDICATOR = colored('[Spider] ', 'blue')
+# Text to show before scraper related outputs
+SCRAPER_INDICATOR = colored('[Scraper] ', 'blue')
 
 # Wait time for Selenium before getting page source. Helpful for AJAX based
 # code fetching.
@@ -48,7 +48,7 @@ PRICE_CONTENT_OPTIONS = {'$'}
 # TODO: availability
 AVAILABILITY_OPTIONS = []
 
-# Amount of products to show on output for spider search completion.
+# Amount of products to show on output of search completion.
 PRODUCTS_TO_SHOW = 5
 
 # Output file to write to with results

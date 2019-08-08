@@ -6,10 +6,10 @@ from collections.abc import Iterable
 from selenium import webdriver
 
 
-def flatten(l):
+def flatten_list(l):
     for el in l:
         if isinstance(el, Iterable) and not isinstance(el, (str, bytes)):
-            yield from flatten(el)
+            yield from flatten_list(el)
         else:
             yield el
 
@@ -27,7 +27,7 @@ def add_or_append_product(product_attr, products, contents, brand_url):
 
 
 def scrape_products(website):
-    print(f"{config.SPIDER_INDICATOR} Getting {website}...")
+    print(f"{config.SCRAPER_INDICATOR} Getting {website}...")
 
     products_found = []
 
@@ -45,7 +45,7 @@ def scrape_products(website):
     # Get page source after load and format with BeautifulSoup
     loadedPageSource = driver.page_source
     full_page_soup = BeautifulSoup(loadedPageSource, 'html.parser')
-    print(f"{config.SPIDER_INDICATOR} Page loaded!")
+    print(f"{config.SCRAPER_INDICATOR} Page loaded!")
 
     # Get list of tags to search
     tags_to_search = full_page_soup.find_all(config.TAGS_TO_SEARCH)
@@ -54,7 +54,7 @@ def scrape_products(website):
     for tag in tags_to_search:
 
         tag_values = list(tag.attrs.values())
-        tag_values_flat = list(flatten(tag_values))
+        tag_values_flat = list(flatten_list(tag_values))
 
         tag_contents =  ' '.join(tag.text.split())
 
@@ -79,6 +79,6 @@ def scrape_products(website):
                 'img').attrs['src'], website)
             continue
 
-    print(f"{config.SPIDER_INDICATOR} Complete!")
+    print(f"{config.SCRAPER_INDICATOR} Complete!")
 
     return products_found
