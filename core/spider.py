@@ -1,18 +1,16 @@
 import time
-import re
 import core.config as config
+import tldextract
 
 from bs4 import BeautifulSoup
 from collections.abc import Iterable
 from selenium import webdriver
 
-def get_base_website_name_from_url(url):
-    # Get the base website name from a website's URL
-    base_website_name = re.sub('http[A-Z]?://', '', url)
-    base_website_name = base_website_name.split('/')[0]
+def is_same_domain(url_one, url_two):
+    domain_one = tldextract.extract(url_one).domain
+    domain_two = tldextract.extract(url_two).domain
 
-    return base_website_name
-
+    return domain_one == domain_two
 
 def crawl_website(driver, base_url, level_to_crawl=1):
     print(f"{config.SPIDER_INDICATOR} Starting spider...")
@@ -22,14 +20,12 @@ def crawl_website(driver, base_url, level_to_crawl=1):
     driver.get(base_url)
     time.sleep(config.SPA_LOAD_WAIT_TIME)
 
-    # Base website name from base_url
-    base_website_name = get_base_website_name_from_url(base_url)
-
-    # Get all links to potential product pages
+    # Get all links to potential product pages with same domain
     urls_found = {
-        elm.get_attribute('href') for elm in 
+        elm.get_attribute('href') for elm in
         driver.find_elements_by_xpath("//a[@href]") 
-        if base_website_name in elm.get_attribute('href')
+        if elm.get_attribute('href') and 
+        is_same_domain(base_url, elm.get_attribute('href'))
     }
 
     print(f"{config.SPIDER_INDICATOR} Complete!")

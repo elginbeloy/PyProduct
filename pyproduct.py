@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # Start selenium session with Chrome driver
     chrome_options = webdriver.ChromeOptions()
-    # Remove to watch the bot go :D
+    # Comment this out to watch the bot go :D
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--incognito')
     chrome_options.add_argument('window-size=1920x1080')
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     for url in urls_to_scrape:
         batch_products_found = scrape_products(driver, url)
         total_products_found.extend(batch_products_found)
-        print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped")
+        print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped.")
         print('')
 
         # FOR LIMITING PURPOSES

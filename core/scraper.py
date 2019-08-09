@@ -3,6 +3,7 @@ import core.config as config
 
 from bs4 import BeautifulSoup
 from collections.abc import Iterable
+from core.bot_scripts import scroll_until_done
 
 def flatten_list(l):
     for el in l:
@@ -33,6 +34,9 @@ def scrape_products(driver, website):
     # Get URL and wait for page to load (JavaScript & SPAs)
     driver.get(website)
     time.sleep(config.SPA_LOAD_WAIT_TIME)
+    
+    # Scroll page before getting products
+    scroll_until_done(driver)
 
     # Get page source after load and format with BeautifulSoup
     loadedPageSource = driver.page_source

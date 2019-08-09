@@ -9,9 +9,16 @@ SCRAPER_INDICATOR = colored('[Scraper] ', 'blue')
 # Text to show before spider related outputs
 SPIDER_INDICATOR = colored('[Spider] ', 'green')
 
+# Text to show before spider related outputs
+PAGE_BOT_INDICATOR = colored('[PageBot] ', 'yellow')
+
 # Wait time for Selenium before getting page source. Helpful for AJAX based
 # code fetching.
 SPA_LOAD_WAIT_TIME = 2
+
+# Max amount of scrolls bot will do before being done.
+# NOTE: Need to limit for infinite scrolling catalogs
+SCROLL_LIMIT = 10
 
 # HTML elements to search when looking for product data.
 TAGS_TO_SEARCH = ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'span', 'div']
@@ -62,8 +69,6 @@ DEFAULT_OUTPUT_FILE = './output.tsv'
 
 # Default website URLs if none are specified
 DEFAULT_WEBSITE_URLS = [
-    'https://store.nike.com/us/en_us/pw/mens-running-shoes/7puZ8yzZoi3',
-    'https://store.nike.com/us/en_us/pw/mens-tracksuits/7puZs9h',
-    'https://store.nike.com/us/en_us/pw/mens-tops-t-shirts/7puZobp',
-    'https://www.jennikayne.com/category/shoes/flats'
+    'https://store.nike.com',
+    'https://www.jennikayne.com'
 ]
