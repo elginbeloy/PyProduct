@@ -18,18 +18,21 @@ def crawl_website(driver, base_url, level_to_crawl=1):
 
     # Get URL and wait for page to load (JavaScript & SPAs)
     driver.get(base_url)
-    time.sleep(config.SPA_LOAD_WAIT_TIME)
 
-    # Get all links to potential product pages with same domain
-    urls_found = {
-        elm.get_attribute('href') for elm in
-        driver.find_elements_by_xpath("//a[@href]") 
-        if elm.get_attribute('href') and 
-        is_same_domain(base_url, elm.get_attribute('href'))
-    }
+    urls_found = {}
+    while len(urls_found) == 0:
+        # Get all links to potential product pages with same domain
+        urls_found = {
+            elm.get_attribute('href') for elm in
+            driver.find_elements_by_xpath("//a[@href]") 
+            if elm.get_attribute('href') and 
+            is_same_domain(base_url, elm.get_attribute('href'))
+        }
+
+        time.sleep(config.SPA_LOAD_WAIT_TIME)
 
     print(f"{config.SPIDER_INDICATOR} Complete!")
     print(f"{config.SPIDER_INDICATOR} {len(urls_found)} URLS found.")
     print('')
 
-    return urls_found
+    return list(urls_found)

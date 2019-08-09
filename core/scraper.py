@@ -58,6 +58,7 @@ def scrape_products(driver, website, not_found_value):
                 domain, not_found_value),
             'price': get_product_text_attr(product_container, 'price',
                 domain, not_found_value),
+            'domain': domain
         }
 
         products_found.append(current_product)

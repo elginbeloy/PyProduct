@@ -4,10 +4,9 @@ import pyfiglet
 import argparse
 import core.config as config
 
-from selenium import webdriver
+from joblib import Parallel, delayed
 from termcolor import colored
-from core.spider import crawl_website
-from core.scraper import scrape_products
+from core.browser_pool import scrape_websites
 
 
 parser = argparse.ArgumentParser(
@@ -36,36 +35,8 @@ if __name__ == '__main__':
     print(colored(ascii_banner, 'blue'))
     print("By Elgin Beloy\n")
 
-
-    # Start selenium session with Chrome driver
-    chrome_options = webdriver.ChromeOptions()
-    # Comment this out to watch the bot go :D
-    # chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--incognito')
-    chrome_options.add_argument('window-size=1920x1080')
-    driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-
-    # TODO: Make this a unique set of dicts based on values.
-    total_products_found = []
-
-    for website in args.websites:
-        urls_to_scrape = crawl_website(driver, website)
-
-        for url in urls_to_scrape:
-            batch_products_found = scrape_products(
-                driver, url, args.not_found_value)  
-            total_products_found.extend(batch_products_found)
-            print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped.")
-            print('')
-
-            # Break once met max products
-            if len(total_products_found) >= args.max_product_limit:
-                break
-        
-        # Break once met max products
-        if len(total_products_found) >= args.max_product_limit:
-            break
-
+    total_products_found = scrape_websites(
+        args.websites, args.verbose, args.not_found_value, args.not_found_value)
 
     # Show user products scraped
     print(f"{config.PYPRODUCT_INDICATOR} Products scraped:")
