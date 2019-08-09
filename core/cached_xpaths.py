@@ -19,6 +19,9 @@ cached_xpaths = {
 
     'adidas': {
         'container': '//div[contains(@class, "gl-product-card")]',
-        'container': '//div[contains(@class, "gl-product-card")]',
+        'name': '//div[contains(@class, "gl-product-card__name")]',
+        'description': '//div[contains(@class, "gl-product-card__category")]',
+        'image': '//div[contains(@class, "gl-product-card__image")]',
+        'price': '//div[contains(@class, "gl-price")]',
     }
 }
