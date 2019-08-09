@@ -19,11 +19,16 @@ parser.add_argument('-w', '--websites', type=list, nargs='+',
 parser.add_argument('-o', '--output', type=str,
     default=config.DEFAULT_OUTPUT_FILE,
     help='The output TSV file to write to once complete.')
+parser.add_argument('--max-product-limit', type=int,
+    default=config.DEFAULT_MAX_PRODUCT_LIMIT,
+    help='The maximum amount of products to scrape before saving and quiting.')
+parser.add_argument('--not-found-value', type=str, 
+    default=config.DEFAULT_NOT_FOUND_VALUE,
+    help='The default value for when a product attribute is not found.')
 parser.add_argument('-v', '--verbose', type=int, default=1,
     help='The verbosity level for the CLI output log.')
 
 args = parser.parse_args()
-
 
 if __name__ == '__main__':
     # Print PyProduct banner
@@ -40,20 +45,21 @@ if __name__ == '__main__':
     chrome_options.add_argument('window-size=1920x1080')
     driver = webdriver.Chrome('./chromedriver', options=chrome_options)
 
+    for website in args.websites:
+        urls_to_scrape = crawl_website(driver, website)
 
-    urls_to_scrape = crawl_website(driver, args.website)
+        # TODO: Make this a unique set of dicts based on values.
+        total_products_found = []
+        for url in urls_to_scrape:
+            batch_products_found = scrape_products(
+                driver, url, args.not_found_value)  
+            total_products_found.extend(batch_products_found)
+            print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped.")
+            print('')
 
-    # TODO: Make this a unique set of dicts based on values.
-    total_products_found = []
-    for url in urls_to_scrape:
-        batch_products_found = scrape_products(driver, url)
-        total_products_found.extend(batch_products_found)
-        print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped.")
-        print('')
-
-        # Break once met max products
-        if len(total_products_found) >= config.MAX_PRODUCT_LIMIT:
-            break
+            # Break once met max products
+            if len(total_products_found) >= args.max_product_limit:
+                break
 
 
     # Show user products scraped

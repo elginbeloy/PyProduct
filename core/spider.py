@@ -1,6 +1,6 @@
 import time
-import core.config as config
 import tldextract
+import core.config as config
 
 from bs4 import BeautifulSoup
 from collections.abc import Iterable
