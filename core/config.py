@@ -20,6 +20,10 @@ SPA_LOAD_WAIT_TIME = 2
 # NOTE: Need to limit for infinite scrolling catalogs
 SCROLL_LIMIT = 10
 
+# Max amount of products to scrape before ending process
+# For potential memory reasons
+MAX_PRODUCT_LIMIT = 50000
+
 # HTML elements to search when looking for product data.
 TAGS_TO_SEARCH = ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'span', 'div']
 

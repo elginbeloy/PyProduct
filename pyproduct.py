@@ -51,9 +51,9 @@ if __name__ == '__main__':
         print(f"{config.PYPRODUCT_INDICATOR} Update: {len(total_products_found)} total products scraped.")
         print('')
 
-        # FOR LIMITING PURPOSES
-        # if len(total_products_found) >= 500:
-        #    break
+        # Break once met max products
+        if len(total_products_found) >= config.MAX_PRODUCT_LIMIT:
+            break
 
 
     # Show user products scraped
