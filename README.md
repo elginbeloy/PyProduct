@@ -1,9 +1,9 @@
 <p align="center"><img src="assets/logo.svg" width="250" title="PyProduct Logo"></p>
 
 <p align="center">
-<a href="https://github.com/elginbeloy/PyProduct/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/elginbeloy/PyProduct">
-</a>
+    <a href="https://github.com/elginbeloy/PyProduct/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/elginbeloy/PyProduct">
+    </a>
 </p>
 
 
@@ -15,20 +15,27 @@ PyProduct is a Python + Selenium + BeautifulSoup based web catalog scraper. PyPr
 
 # Usage
 
-Simply clone, install dependencies, and go:
+To get started with PyProduct, simply clone, install dependencies, and go:
+
+1. Clone the repo and cd into the directory
 
 ```
-# Clone the repo and cd into the directory
 git clone https://github.com/elginbeloy/PyProduct
 cd PyProduct
+```
 
-# Install requirements.txt into a virtual enviorenment
+2. Install requirements.txt into a virtual environment
+
+```
 virtualenv venv
 source ./venv/bin/activate
 pip install -r requirements.txt
+```
+3. Run PyProduct
 
-# Run PyProduct
+```
 python pyproduct.py --help
+```
 
 # Contributing
 
