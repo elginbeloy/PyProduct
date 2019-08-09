@@ -10,12 +10,18 @@ from core.spider import crawl_website
 from core.scraper import scrape_products
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-w', '--website', type=str, 
-    default=config.DEFAULT_WEBSITE_URLS[0])
+parser = argparse.ArgumentParser(
+    prog='PyProduct',
+    description='Python + Selenium + BeautifulSoup based web catalog scraper.')
+parser.add_argument('-w', '--websites', type=list, nargs='+',
+    default=config.DEFAULT_WEBSITE_URLS,
+    help='Websites for PyProduct to scrape.')
 parser.add_argument('-o', '--output', type=str,
-    default=config.DEFAULT_OUTPUT_FILE)
-parser.add_argument('-v', '--verbose', type=int, default=1)
+    default=config.DEFAULT_OUTPUT_FILE,
+    help='The output TSV file to write to once complete.')
+parser.add_argument('-v', '--verbose', type=int, default=1,
+    help='The verbosity level for the CLI output log.')
+
 args = parser.parse_args()
 
 
