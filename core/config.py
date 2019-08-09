@@ -77,5 +77,6 @@ DEFAULT_OUTPUT_FILE = './output.tsv'
 # Default website URLs if none are specified
 DEFAULT_WEBSITE_URLS = [
     'https://store.nike.com',
-    'https://www.jennikayne.com'
+    'https://www.jennikayne.com',
+    'https://adidas.com'
 ]
