@@ -3,9 +3,9 @@
 cached_xpaths = {
     'nike': {
         'container': '//div[contains(@class, "product-card__body")]',
-        'name': '//div[contains(@class, "product-card__title")]',
-        'description': '//div[contains(@class, "product-card__title")]',
-        'image': '//div[contains(@class, "product-card__hero-image")]',
+        'name': '//div[contains(@class, "product-card__titles")]/div[contains(@class, "product-card__title")]',
+        'description': '//div[contains(@class, "product-card__subtitle")]',
+        'image': '//div[contains(@class, "product-card__hero-image")]/picture/img',
         'price': '//div[contains(@class, "product-card__price")]',
     },
 
@@ -21,7 +21,7 @@ cached_xpaths = {
         'container': '//div[contains(@class, "gl-product-card")]',
         'name': '//div[contains(@class, "gl-product-card__name")]',
         'description': '//div[contains(@class, "gl-product-card__category")]',
-        'image': '//div[contains(@class, "gl-product-card__image")]',
+        'image': '//img[contains(@class, "gl-product-card__image")]',
         'price': '//div[contains(@class, "gl-price")]',
     }
 }

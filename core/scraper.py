@@ -7,7 +7,7 @@ from core.bot_scripts import scroll_until_done
 from core.cached_xpaths import cached_xpaths
 
 
-def get_product_attr(product_container, attr_name, domain, not_found_value):
+def get_product_text_attr(product_container, attr_name, domain, not_found_value):
     try:
         return product_container.find_element_by_xpath(
             cached_xpaths[domain][attr_name]).text
@@ -15,6 +15,20 @@ def get_product_attr(product_container, attr_name, domain, not_found_value):
         print(f'{config.SCRAPER_INDICATOR} Element {attr_name} not found.')
         return not_found_value
         
+
+def get_product_image_attr(product_container, attr_name, domain, not_found_value):
+    try:
+        image_container = product_container.find_element_by_xpath(
+            cached_xpaths[domain][attr_name])
+        if image_container.get_attribute('src') != None:
+            return image_container.get_attribute('src')
+        else:
+            return image_container.find_element_by_xpath(
+                '//img').get_attribute('src')
+    except NoSuchElementException:
+        print(f'{config.SCRAPER_INDICATOR} Element {attr_name} not found.')
+        return not_found_value
+
 
 def scrape_products(driver, website, not_found_value):
     print(f"{config.SCRAPER_INDICATOR} Starting scraper...")
@@ -36,13 +50,13 @@ def scrape_products(driver, website, not_found_value):
     for product_container in product_containers:
 
         current_product = {
-            'name': get_product_attr(product_container, 'name', 
+            'name': get_product_text_attr(product_container, 'name',
                 domain, not_found_value),
-            'description': get_product_attr(product_container, 'description', 
+            'description': get_product_text_attr(product_container, 'description',
                 domain, not_found_value),
-            'image': get_product_attr(product_container, 'image', 
+            'image': get_product_image_attr(product_container, 'image',
                 domain, not_found_value),
-            'price': get_product_attr(product_container, 'price', 
+            'price': get_product_text_attr(product_container, 'price',
                 domain, not_found_value),
         }
 
