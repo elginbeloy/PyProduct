@@ -1,7 +1,13 @@
 from termcolor import colored
 
+# Text to show before spider related outputs
+PYPRODUCT_INDICATOR = colored('[PyProduct] ', 'red')
+
 # Text to show before scraper related outputs
 SCRAPER_INDICATOR = colored('[Scraper] ', 'blue')
+
+# Text to show before spider related outputs
+SPIDER_INDICATOR = colored('[Spider] ', 'green')
 
 # Wait time for Selenium before getting page source. Helpful for AJAX based
 # code fetching.

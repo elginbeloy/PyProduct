@@ -3,8 +3,6 @@ import core.config as config
 
 from bs4 import BeautifulSoup
 from collections.abc import Iterable
-from selenium import webdriver
-
 
 def flatten_list(l):
     for el in l:
@@ -26,26 +24,19 @@ def add_or_append_product(product_attr, products, contents, brand_url):
         products.append({product_attr: contents, 'brand_url': brand_url})
 
 
-def scrape_products(website):
-    print(f"{config.SCRAPER_INDICATOR} Getting {website}...")
+def scrape_products(driver, website):
+    print(f"{config.SCRAPER_INDICATOR} Starting scraper...")
+    print(f"{config.SCRAPER_INDICATOR} Scraping {website}...")
 
     products_found = []
 
-    # Start selenium session with Chrome driver
-    chrome_options = webdriver.ChromeOptions()
-    # Remove to watch the bot go :D
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('window-size=1920x1080')
-    driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-
-    # Get URL and wait for product page to load (JavaScript & SPAs)
+    # Get URL and wait for page to load (JavaScript & SPAs)
     driver.get(website)
     time.sleep(config.SPA_LOAD_WAIT_TIME)
 
     # Get page source after load and format with BeautifulSoup
     loadedPageSource = driver.page_source
     full_page_soup = BeautifulSoup(loadedPageSource, 'html.parser')
-    print(f"{config.SCRAPER_INDICATOR} Page loaded!")
 
     # Get list of tags to search
     tags_to_search = full_page_soup.find_all(config.TAGS_TO_SEARCH)
@@ -80,5 +71,7 @@ def scrape_products(website):
             continue
 
     print(f"{config.SCRAPER_INDICATOR} Complete!")
+    print(f"{config.SCRAPER_INDICATOR} {len(products_found)} products found.")
+    print('')
 
     return products_found
