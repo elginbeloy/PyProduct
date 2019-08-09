@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/logo.svg" width="250" title="PyProduct Logo"></p>
+<p align="center"><img src="assets/logo.svg" width="400" title="PyProduct Logo"></p>
 
 <p align="center">
     <a href="https://github.com/elginbeloy/PyProduct/blob/master/LICENSE">
