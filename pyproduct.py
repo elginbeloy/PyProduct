@@ -13,7 +13,7 @@ from core.scraper import scrape_products
 parser = argparse.ArgumentParser(
     prog='PyProduct',
     description='Python + Selenium + BeautifulSoup based web catalog scraper.')
-parser.add_argument('-w', '--websites', type=list, nargs='+',
+parser.add_argument('-w', '--websites', type=str, nargs='+',
     default=config.DEFAULT_WEBSITE_URLS,
     help='Websites for PyProduct to scrape.')
 parser.add_argument('-o', '--output', type=str,
@@ -40,16 +40,17 @@ if __name__ == '__main__':
     # Start selenium session with Chrome driver
     chrome_options = webdriver.ChromeOptions()
     # Comment this out to watch the bot go :D
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('--incognito')
     chrome_options.add_argument('window-size=1920x1080')
     driver = webdriver.Chrome('./chromedriver', options=chrome_options)
 
+    # TODO: Make this a unique set of dicts based on values.
+    total_products_found = []
+
     for website in args.websites:
         urls_to_scrape = crawl_website(driver, website)
 
-        # TODO: Make this a unique set of dicts based on values.
-        total_products_found = []
         for url in urls_to_scrape:
             batch_products_found = scrape_products(
                 driver, url, args.not_found_value)  
@@ -60,6 +61,10 @@ if __name__ == '__main__':
             # Break once met max products
             if len(total_products_found) >= args.max_product_limit:
                 break
+        
+        # Break once met max products
+        if len(total_products_found) >= args.max_product_limit:
+            break
 
 
     # Show user products scraped
@@ -68,7 +73,7 @@ if __name__ == '__main__':
     for product in total_products_found[:config.PRODUCTS_TO_SHOW]:
         print('Name: ' + str(product.get('name', '')))
         print('Description: ' + str(product.get('description', '')))
-        print('Image URL: ' + str(product.get('image_url', '')))
+        print('Image URL: ' + str(product.get('image', '')))
         print('Price: ' + str(product.get('price', '')))
         print('')
 
