@@ -14,7 +14,7 @@ PAGE_BOT_INDICATOR = colored('[PageBot] ', 'yellow')
 
 # Wait time for Selenium before getting page source. Helpful for AJAX based
 # code fetching.
-SPA_LOAD_WAIT_TIME = 4
+SPA_LOAD_WAIT_TIME = 10
 
 # Max amount of scrolls bot will do before being done.
 # NOTE: Need to limit for infinite scrolling catalogs

@@ -44,6 +44,7 @@ def scrape_products(driver, website, not_found_value):
     
     # Scroll page before getting products
     scroll_until_done(driver)
+    time.sleep(config.SPA_LOAD_WAIT_TIME)
 
     # Go through all products by parent container
     product_containers = driver.find_elements_by_xpath(cached_xpaths[domain]['container'])

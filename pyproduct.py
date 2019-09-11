@@ -38,7 +38,7 @@ if __name__ == '__main__':
     total_products_found = scrape_websites(
         args.websites, args.verbose, args.not_found_value, args.not_found_value)
 
-    # Show user products scraped
+    # Show user some of the products scraped
     print(f"{config.PYPRODUCT_INDICATOR} Products scraped:")
     print('')
     for product in total_products_found[:config.PRODUCTS_TO_SHOW]:
@@ -48,10 +48,13 @@ if __name__ == '__main__':
         print('Price: ' + str(product.get('price', '')))
         print('')
 
-    print(f'... { max(0, len(total_products_found) - config.PRODUCTS_TO_SHOW) } more results ...\n')
+    products_not_shown = len(total_products_found) - config.PRODUCTS_TO_SHOW
+    products_not_shown = max(0, products_not_shown)
+    print(f'... { products_not_shown } more results ...\n')
 
     print(f"{config.PYPRODUCT_INDICATOR} Writing output to {args.output}...")
 
+    # Write output to TSV output file based on first dicts keys
     keys = total_products_found[0].keys()
     with open(args.output, 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, keys, delimiter="\t")

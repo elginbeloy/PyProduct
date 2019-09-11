@@ -23,5 +23,13 @@ cached_xpaths = {
         'description': './/div[contains(@class, "gl-product-card__category")]',
         'image': './/img[contains(@class, "gl-product-card__image")]',
         'price': './/div[contains(@class, "gl-price")]',
+    },
+
+    'paige': {
+        'container': '//div[contains(@class, "pg-productListItems_product")]',
+        'name': './/div[contains(@class, "pg-productListItems_name")]',
+        'description': './/div[contains(@class, "pg-productListItems_trademark")]',
+        'image': './/a[contains(@class, "pg-productListItems_image")]/figure/img',
+        'price': './/div[contains(@class, "pg-productListItems_priceNormal")]',
     }
 }
