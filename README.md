@@ -46,6 +46,8 @@ pip install -r requirements.txt
 python pyproduct.py --help
 ```
 
+> NOTE: Programmatic OMS functionality will not work without a .env in root that contains the necessary purchase environment variables.
+
 # ToDo's
 
 - [x] Add `README.md` getting started and explanation documentation
