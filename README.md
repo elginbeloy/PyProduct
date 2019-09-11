@@ -48,26 +48,26 @@ python pyproduct.py --help
 
 # ToDo's
 
-[x] - Add `README.md` getting started and explanation documentation
-[ ] - Make crawler not include detail URLs (catalog list URLs only)
-[ ] - Add smooth scrolling for lazy-loaded product images, etc...
-[ ] - Make results a unique set to ensure no repeat products
+- [x] Add `README.md` getting started and explanation documentation
+- [ ] Make crawler not include detail URLs (catalog list URLs only)
+- [ ] Add smooth scrolling for lazy-loaded product images, etc...
+- [ ] Make results a unique set to ensure no repeat products
 
-[ ] - Add MSRP to scraped data
-[ ] - Support multiple images in scraped data
-[ ] - Add origin purchase URL to scraped data 
-[ ] - Add availability to scraped data
-[ ] - Add shipping options to scraped data
+- [ ] Add MSRP to scraped data
+- [ ] Support multiple images in scraped data
+- [ ] Add origin purchase URL to scraped data 
+- [ ] Add availability to scraped data
+- [ ] Add shipping options to scraped data
 
-[ ] - Standardize and expand programmatic OMS
-[ ] - Intergrate scraper with programmatic OMS System
+- [ ] Standardize and expand programmatic OMS
+- [ ] Intergrate scraper with programmatic OMS System
 
-[ ] - Add testing, code coverage, and badges for each to README.md
+- [ ] Add testing, code coverage, and badges for each to README.md
 
-[ ] - Add automatic cached xpath and url generation
-[ ] - Make cached xpath test to ensure UI not updated (if so regenerate or alert)
-[ ] - Make NN based xpath generation using NLP or CNN
-[ ] - Create system for scraping products on an interval and saving to PostgreSQL
+- [ ] Add automatic cached xpath and url generation
+- [ ] Make cached xpath test to ensure UI not updated (if so regenerate or alert)
+- [ ] Make NN based xpath generation using NLP or CNN
+- [ ] Create system for scraping products on an interval and saving to PostgreSQL
 
 # Contributing
 
