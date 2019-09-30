@@ -1,0 +1,34 @@
+{
+    "nike": {
+        "product_url_regex": "nike\\.com\\/t\\/[A-Za-z0-9-_]{8,}\\/[A-Za-z0-9-_]{10}",
+        "container": "//div[contains(@class, 'product-grid__card')]",
+        "name": ".//div[contains(@class, 'product-card__titles')]/div[contains(@class, 'product-card__title')]",
+        "description": ".//div[contains(@class, 'product-card__subtitle')]",
+        "image": ".//div[contains(@class, 'product-card__hero-image')]/picture/img",
+        "price": ".//div[contains(@class, 'product-card__price')]"
+    },
+    "jennikayne": {
+        "product_url_regex": "/some_url_regex/",
+        "container": "//div[contains(@class, 'product')]",
+        "name": ".//div[contains(@class, 'product__name')]",
+        "description": ".//div[contains(@class, 'product__color-info')]",
+        "image": ".//div[contains(@class, 'product__image')]",
+        "price": ".//div[contains(@class, 'product__price')]"
+    },
+    "adidas": {
+        "product_url_regex": "adidas\\.com\\/us\\/[A-Za-z0-9-_]{1,}\\/[A-Z]{2}[0-9]{4}\\.html",
+        "container": "//div[contains(@class, 'gl-product-card-container')]",
+        "name": ".//div[contains(@class, 'gl-product-card__name')]",
+        "description": ".//div[contains(@class, 'gl-product-card__category')]",
+        "image": ".//img[contains(@class, 'gl-product-card__image')]",
+        "price": ".//div[contains(@class, 'gl-price')]"
+    },
+    "paige": {
+        "product_url_regex": "/some_url_regex/",
+        "container": "//div[contains(@class, 'pg-productListItems_product')]",
+        "name": ".//div[contains(@class, 'pg-productListItems_name')]",
+        "description": ".//div[contains(@class, 'pg-productListItems_trademark')]",
+        "image": ".//a[contains(@class, 'pg-productListItems_image')]/figure/img",
+        "price": ".//div[contains(@class, 'pg-productListItems_priceNormal')]"
+    }
+}

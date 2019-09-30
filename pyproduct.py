@@ -40,13 +40,13 @@ if __name__ == '__main__':
 
     # Show user some of the products scraped
     print(f"{config.PYPRODUCT_INDICATOR} Products scraped:")
-    print('')
+    print()
     for product in total_products_found[:config.PRODUCTS_TO_SHOW]:
         print('Name: ' + str(product.get('name', '')))
         print('Description: ' + str(product.get('description', '')))
         print('Image URL: ' + str(product.get('image', '')))
         print('Price: ' + str(product.get('price', '')))
-        print('')
+        print()
 
     products_not_shown = len(total_products_found) - config.PRODUCTS_TO_SHOW
     products_not_shown = max(0, products_not_shown)

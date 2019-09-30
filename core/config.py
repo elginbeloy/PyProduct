@@ -16,10 +16,6 @@ PAGE_BOT_INDICATOR = colored('[PageBot] ', 'yellow')
 # code fetching.
 SPA_LOAD_WAIT_TIME = 10
 
-# Max amount of scrolls bot will do before being done.
-# NOTE: Need to limit for infinite scrolling catalogs
-SCROLL_LIMIT = 10
-
 # Max amount of products to scrape before ending process
 # For potential memory reasons
 DEFAULT_MAX_PRODUCT_LIMIT = 50000
