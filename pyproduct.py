@@ -31,34 +31,36 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     # Print PyProduct banner
-    ascii_banner = pyfiglet.figlet_format("PyProduct v.1.2")
+    ascii_banner = pyfiglet.figlet_format("PyProduct v.1.3")
     print(colored(ascii_banner, 'blue'))
     print("By Elgin Beloy\n")
 
     total_products_found = scrape_websites(
         args.websites, args.verbose, args.not_found_value, args.not_found_value)
 
+    products_found_values = list(total_products_found.values())
+
     # Show user some of the products scraped
     print(f"{config.PYPRODUCT_INDICATOR} Products scraped:")
     print()
-    for product in total_products_found[:config.PRODUCTS_TO_SHOW]:
+    for product in products_found_values[:config.PRODUCTS_TO_SHOW]:
         print('Name: ' + str(product.get('name', '')))
         print('Description: ' + str(product.get('description', '')))
         print('Image URL: ' + str(product.get('image', '')))
         print('Price: ' + str(product.get('price', '')))
         print()
 
-    products_not_shown = len(total_products_found) - config.PRODUCTS_TO_SHOW
+    products_not_shown = len(products_found_values) - config.PRODUCTS_TO_SHOW
     products_not_shown = max(0, products_not_shown)
     print(f'... { products_not_shown } more results ...\n')
 
     print(f"{config.PYPRODUCT_INDICATOR} Writing output to {args.output}...")
 
     # Write output to TSV output file based on first dicts keys
-    keys = total_products_found[0].keys()
+    keys = products_found_values[0].keys()
     with open(args.output, 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, keys, delimiter="\t")
         dict_writer.writeheader()
-        dict_writer.writerows(total_products_found)
+        dict_writer.writerows(products_found_values)
 
     print(f"{config.PYPRODUCT_INDICATOR} Complete!")

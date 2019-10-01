@@ -53,7 +53,9 @@ python pyproduct.py --help
 - [x] Add `README.md` getting started and explanation documentation
 - [x] Make crawler not include detail URLs (catalog list URLs only)
 - [x] Add smooth scrolling for lazy-loaded product images, etc...
-- [ ] Make results a unique set to ensure no repeat products
+- [ ] Add x-out of popup to xpaths in case of popup 
+- [ ] Don't do scrolling or anything if product containers not found
+- [x] Make results a unique set to ensure no repeat products
 - [ ] Make deep option for scraping URLs past initial page
 
 - [ ] Add MSRP to scraped data

@@ -35,9 +35,6 @@ def get_product_image_attr(domain_xpath, product_container, attr_name, domain, n
 
 
 def scrape_products(driver, website, not_found_value):
-    print(f"{config.SCRAPER_INDICATOR} Starting scraper...")
-    print(f"{config.SCRAPER_INDICATOR} Scraping {website}...")
-
     # TODO: Use default xpath or autogenerate when not found
     try:
         domain = tldextract.extract(website).domain
@@ -76,8 +73,9 @@ def scrape_products(driver, website, not_found_value):
 
         products_found.append(current_product)
 
-    print(f"{config.SCRAPER_INDICATOR} Complete!")
-    print(f"{config.SCRAPER_INDICATOR} {len(products_found)} products found.")
-    print('')
+    if len(products_found) > 0:
+        print(
+            f"{config.SCRAPER_INDICATOR} {len(products_found)} more products found at")
+        print(f"{config.SCRAPER_INDICATOR} {website}")
 
     return products_found

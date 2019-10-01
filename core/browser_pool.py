@@ -26,7 +26,7 @@ def create_browser_scrape_job(url, not_found_value, max_product_limit):
 
 def scrape_websites(websites, verbose, not_found_value, max_product_limit):
     # TODO: Make this a unique set of dicts based on values.
-    total_products_found = []
+    total_products_found = {}
 
     for website in websites:
         # Get all potential URLs from website
@@ -39,10 +39,8 @@ def scrape_websites(websites, verbose, not_found_value, max_product_limit):
             max_product_limit
         ) for url in urls_to_scrape) # TODO: do all after better indexing is achieved 
 
-        products_from_website = [
-            product for product_list in product_batches for product in product_list]
-
-        total_products_found.extend(products_from_website)
-
+        for product_list in product_batches:
+            for product in product_list:
+                total_products_found[product['name']] = product
 
     return total_products_found
