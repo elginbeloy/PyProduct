@@ -5,7 +5,8 @@
         "name": ".//div[contains(@class, 'product-card__titles')]/div[contains(@class, 'product-card__title')]",
         "description": ".//div[contains(@class, 'product-card__subtitle')]",
         "image": ".//div[contains(@class, 'product-card__hero-image')]/picture/img",
-        "price": ".//div[contains(@class, 'product-card__price')]"
+        "price": ".//div[contains(@class, 'product-card__price')]",
+        "link": ".//a[contains(@class, 'product-card__link-overlay')]"
     },
     "jennikayne": {
         "product_url_regex": "/some_url_regex/",
@@ -13,7 +14,8 @@
         "name": ".//div[contains(@class, 'product__name')]",
         "description": ".//div[contains(@class, 'product__color-info')]",
         "image": ".//div[contains(@class, 'product__image')]",
-        "price": ".//div[contains(@class, 'product__price')]"
+        "price": ".//div[contains(@class, 'product__price')]",
+        "link": ".//div[contains(@class, 'product__image')]/a"
     },
     "adidas": {
         "product_url_regex": "adidas\\.com\\/us\\/[A-Za-z0-9-_]{1,}\\/[A-Z]{2}[0-9]{4}\\.html",
@@ -29,6 +31,7 @@
         "name": ".//div[contains(@class, 'pg-productListItems_name')]",
         "description": ".//div[contains(@class, 'pg-productListItems_trademark')]",
         "image": ".//a[contains(@class, 'pg-productListItems_image')]/figure/img",
-        "price": ".//div[contains(@class, 'pg-productListItems_priceNormal')]"
+        "price": ".//div[contains(@class, 'pg-productListItems_priceNormal')]",
+        "link": ".//a[contains(@class, 'pg-productListItems_image')]"
     }
 }

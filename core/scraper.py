@@ -11,14 +11,27 @@ def get_cached_xpaths():
         return json.loads(xpaths_file.read())
 
 
-def get_product_text_attr(domain_xpath, product_container, attr_name, domain, not_found_value):
+def get_product_tag_attr(domain_xpath, product_container, xpath_name, attr_name, domain, not_found_value):
+    try:
+        if attr_name == 'text':
+            return product_container.find_element_by_xpath(
+                domain_xpath[xpath_name]).text
+
+        return product_container.find_element_by_xpath(
+            domain_xpath[xpath_name]).get_attribute(attr_name)
+    except NoSuchElementException:
+        print(f'{config.SCRAPER_INDICATOR} Element {xpath_name} not found.')
+        return not_found_value
+
+
+def get_product_tag_text(domain_xpath, product_container, xpath_name, attr_name, domain, not_found_value):
     try:
         return product_container.find_element_by_xpath(
-            domain_xpath[attr_name]).text
+            domain_xpath[xpath_name]).text
     except NoSuchElementException:
-        print(f'{config.SCRAPER_INDICATOR} Element {attr_name} not found.')
+        print(f'{config.SCRAPER_INDICATOR} Element {xpath_name} not found.')
         return not_found_value
-        
+
 
 def get_product_image_attr(domain_xpath, product_container, attr_name, domain, not_found_value):
     try:
@@ -60,15 +73,12 @@ def scrape_products(driver, website, not_found_value):
     for product_container in product_containers:
 
         current_product = {
-            'name': get_product_text_attr(domain_xpath, product_container, 'name',
-                domain, not_found_value),
-            'description': get_product_text_attr(domain_xpath, product_container, 'description',
-                domain, not_found_value),
-            'image': get_product_image_attr(domain_xpath, product_container, 'image',
-                domain, not_found_value),
-            'price': get_product_text_attr(domain_xpath, product_container, 'price',
-                domain, not_found_value),
-            'domain': domain
+            'name': get_product_tag_attr(domain_xpath, product_container, 'name', 'text', domain, not_found_value),
+            'description': get_product_tag_attr(domain_xpath, product_container, 'description', 'text', domain, not_found_value),
+            'image': get_product_image_attr(domain_xpath, product_container, 'image', domain, not_found_value),
+            'price': get_product_tag_attr(domain_xpath, product_container, 'price', 'text', domain, not_found_value),
+            'domain': domain,
+            'link': get_product_tag_attr(domain_xpath, product_container, 'link', 'href', domain, not_found_value)
         }
 
         products_found.append(current_product)
