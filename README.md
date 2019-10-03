@@ -71,7 +71,7 @@ Fail-safe checks are also a WIP.
 
 ## OMBot (OMS Interaction)
 
-OMBot aims to encapsulate the OMS checkout process into a single bot that can go through checkout on a variaty of sites using cached xpaths (similar to the spider). Again, auto xpath generation is vital here but still a WIP. 
+OMBot aims to encapsulate the OMS checkout process into a single bot that can go through checkout on a variety of sites using cached xpaths (similar to the spider). Again, auto xpath generation is vital here but still a WIP.
 
 # Core ToDo's
 
@@ -85,7 +85,7 @@ OMBot aims to encapsulate the OMS checkout process into a single bot that can go
 - [ ] Add shipping options to scraped data
 
 - [ ] Standardize and expand programmatic OMS
-- [ ] Intergrate scraper with programmatic OMS
+- [ ] Integrate scraper with programmatic OMS
 
 - [ ] Add testing, code coverage, and badges for each to README.md
 

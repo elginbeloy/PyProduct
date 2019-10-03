@@ -23,7 +23,8 @@
         "name": ".//div[contains(@class, 'gl-product-card__name')]",
         "description": ".//div[contains(@class, 'gl-product-card__category')]",
         "image": ".//img[contains(@class, 'gl-product-card__image')]",
-        "price": ".//div[contains(@class, 'gl-price')]"
+        "price": ".//div[contains(@class, 'gl-price')]",
+        "link": ".//div[contains(@class, 'gl-product-card__media')]/a"
     },
     "paige": {
         "product_url_regex": "/some_url_regex/",
