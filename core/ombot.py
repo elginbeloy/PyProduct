@@ -89,12 +89,10 @@ def checkout_from_url(domain, variant, product_url):
                 f'{config.OMBOT_INDICATOR} Changing frame to {action["name"]}.')
             frame = driver.find_element_by_xpath(xpath)
             driver.switch_to.frame(frame)
+        elif action['type'] == 'exit_frame':
+            print(
+                f'{config.OMBOT_INDICATOR} Exiting to default frame.')
+            driver.switch_to.default_content()
+
 
         time.sleep(action['wait'])
-
-
-checkout_from_url(
-    'adidas', 
-    {'size': 'M 12.5 / W 13.5'},
-    'https://www.adidas.com/us/nmd_r1-shoes/B42200.html')
-

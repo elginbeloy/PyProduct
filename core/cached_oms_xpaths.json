@@ -11,7 +11,7 @@
             "name": "size_select",
             "type": "click",
             "xpath": "//button[@title='{size}']",
-            "wait": 3
+            "wait": 2
           },
 
 
@@ -19,7 +19,7 @@
             "name": "checkout",
             "type": "click",
             "xpath": "//button/span[text()='Checkout']",
-            "wait": 10
+            "wait": 5
           },
 
 
@@ -98,7 +98,7 @@
             "name": "same_billing_address",
             "type": "click",
             "xpath": "//input[@name='sameBillingAddress']",
-            "wait": 2
+            "wait": 1
           },
           {
             "name": "billing_first_name",
@@ -154,7 +154,7 @@
             "type": "input",
             "value": "{billing_phone}",
             "xpath": "//input[@name='billingAddress.phoneNumber']",
-            "wait": 1
+            "wait": 0
           },
 
           
@@ -162,33 +162,25 @@
             "name": "review_and_pay",
             "type": "click",
             "xpath": "//button/span[text()='Review and Pay']",
-            "wait": 10
+            "wait": 8
           },
 
           {
             "name": "card_number_iframe",
             "type": "frame",
             "xpath": "//iframe[@name='card.number']",
-            "wait": 2
-          },
-          {
-            "name": "card_number",
-            "type": "input",
-            "value": "{CC_NUMBER}",
-            "xpath": "//input[@name='card.number']",
             "wait": 1
           },
           {
-            "name": "card_number_iframe",
-            "type": "frame",
-            "xpath": "//iframe[@name='card.number']",
-            "wait": 2
-          },
-          {
             "name": "card_number",
             "type": "input",
             "value": "{CC_NUMBER}",
             "xpath": "//input[@name='card.number']",
+            "wait": 0
+          },
+          {
+            "name": "exit_card_number_iframe",
+            "type": "exit_frame",
             "wait": 1
           }
         ]

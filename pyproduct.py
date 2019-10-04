@@ -7,6 +7,7 @@ import core.config as config
 from joblib import Parallel, delayed
 from termcolor import colored
 from core.browser_pool import scrape_websites
+from core.ombot import checkout_from_url 
 
 
 parser = argparse.ArgumentParser(
@@ -26,6 +27,8 @@ parser.add_argument('--not-found-value', type=str,
     help='The default value for when a product attribute is not found.')
 parser.add_argument('-v', '--verbose', type=int, default=1,
     help='The verbosity level for the CLI output log.')
+parser.add_argument('-c', '--checkout', type=str, default=None,
+    help='URL to test checkout on adidas.com using OMBot.')
 
 args = parser.parse_args()
 
@@ -34,6 +37,15 @@ if __name__ == '__main__':
     ascii_banner = pyfiglet.figlet_format("PyProduct v.1.3")
     print(colored(ascii_banner, 'blue'))
     print("By Elgin Beloy\n")
+
+    if args.checkout:
+        checkout_from_url(
+            'adidas',
+            {'size': 'M 12.5 / W 13.5'},
+            args.checkout)
+        
+        exit()
+
 
     total_products_found = scrape_websites(
         args.websites, args.verbose, args.not_found_value, args.not_found_value)
