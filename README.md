@@ -85,7 +85,6 @@ OMBot aims to encapsulate the OMS checkout process into a single bot that can go
 - [ ] Add shipping options to scraped data
 
 - [ ] Standardize and expand programmatic OMS
-- [ ] Integrate scraper with programmatic OMS
 
 - [ ] Add testing, code coverage, and badges for each to README.md
 
