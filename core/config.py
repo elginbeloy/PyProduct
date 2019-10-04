@@ -9,6 +9,8 @@ SCRAPER_INDICATOR = colored('[Scraper]  ', 'blue')
 # Text to show before spider related outputs
 SPIDER_INDICATOR = colored('[Spider]  ', 'green')
 
+OMBOT_INDICATOR = colored('[OMBot]  ', 'blue')
+
 # Text to show before spider related outputs
 PAGE_BOT_INDICATOR = colored('[PageBot]  ', 'yellow')
 

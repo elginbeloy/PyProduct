@@ -1,0 +1,196 @@
+{
+    "adidas": {
+        "actions": [
+          {
+            "name": "add_to_bag", 
+            "type": "click", 
+            "xpath": "//button[contains(@class, 'btn-bag')]", 
+            "wait": 1
+          },
+          {
+            "name": "size_select",
+            "type": "click",
+            "xpath": "//button[@title='{size}']",
+            "wait": 3
+          },
+
+
+          {
+            "name": "checkout",
+            "type": "click",
+            "xpath": "//button/span[text()='Checkout']",
+            "wait": 10
+          },
+
+
+          {
+            "name": "shipping_first_name",
+            "type": "input",
+            "value": "{shipping_first_name}",
+            "xpath": "//input[@name='firstName']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_last_name",
+            "type": "input",
+            "value": "{shipping_last_name}",
+            "xpath": "//input[@name='lastName']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_address_1",
+            "type": "input",
+            "value": "{shipping_address}",
+            "xpath": "//input[@name='address1']",
+            "wait": 0
+          },
+          {
+            "name": "additional_shipping_address",
+            "type": "click",
+            "xpath": "//a[text()='Add additional address info']",
+            "wait": 1
+          },
+          {
+            "name": "shipping_address_2",
+            "type": "input",
+            "value": "{shipping_address_two}",
+            "xpath": "//input[@name='address2']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_city",
+            "type": "input",
+            "value": "{shipping_city}",
+            "xpath": "//input[@name='city']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_zipcode",
+            "type": "input",
+            "value": "{shipping_zipcode}",
+            "xpath": "//input[@name='zipcode']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_stateCode",
+            "type": "select",
+            "value": "California",
+            "xpath": "//select[@name='stateCode']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_email",
+            "type": "input",
+            "value": "{shipping_email}",
+            "xpath": "//input[@name='emailAddress']",
+            "wait": 0
+          },
+          {
+            "name": "shipping_phone",
+            "type": "input",
+            "value": "{shipping_phone}",
+            "xpath": "//input[@name='phoneNumber']",
+            "wait": 0
+          },
+
+
+          {
+            "name": "same_billing_address",
+            "type": "click",
+            "xpath": "//input[@name='sameBillingAddress']",
+            "wait": 2
+          },
+          {
+            "name": "billing_first_name",
+            "type": "input",
+            "value": "{billing_first_name}",
+            "xpath": "//input[@name='billingAddress.firstName']",
+            "wait": 0
+          },
+          {
+            "name": "billing_last_name",
+            "type": "input",
+            "value": "{billing_last_name}",
+            "xpath": "//input[@name='billingAddress.lastName']",
+            "wait": 0
+          },
+          {
+            "name": "billing_address_1",
+            "type": "input",
+            "value": "{billing_address}",
+            "xpath": "//input[@name='billingAddress.address1']",
+            "wait": 0
+          },
+          {
+            "name": "billing_address_2",
+            "type": "input",
+            "value": "{billing_address_two}",
+            "xpath": "//input[@name='billingAddress.address2']",
+            "wait": 0
+          },
+          {
+            "name": "billing_city",
+            "type": "input",
+            "value": "{billing_city}",
+            "xpath": "//input[@name='billingAddress.city']",
+            "wait": 0
+          },
+          {
+            "name": "billing_zipcode",
+            "type": "input",
+            "value": "{billing_zipcode}",
+            "xpath": "//input[@name='billingAddress.zipcode']",
+            "wait": 0
+          },
+          {
+            "name": "billing_stateCode",
+            "type": "select",
+            "value": "California",
+            "xpath": "//select[@name='billingAddress.stateCode']",
+            "wait": 0
+          },
+          {
+            "name": "billing_phone",
+            "type": "input",
+            "value": "{billing_phone}",
+            "xpath": "//input[@name='billingAddress.phoneNumber']",
+            "wait": 1
+          },
+
+          
+          {
+            "name": "review_and_pay",
+            "type": "click",
+            "xpath": "//button/span[text()='Review and Pay']",
+            "wait": 10
+          },
+
+          {
+            "name": "card_number_iframe",
+            "type": "frame",
+            "xpath": "//iframe[@name='card.number']",
+            "wait": 2
+          },
+          {
+            "name": "card_number",
+            "type": "input",
+            "value": "{CC_NUMBER}",
+            "xpath": "//input[@name='card.number']",
+            "wait": 1
+          },
+          {
+            "name": "card_number_iframe",
+            "type": "frame",
+            "xpath": "//iframe[@name='card.number']",
+            "wait": 2
+          },
+          {
+            "name": "card_number",
+            "type": "input",
+            "value": "{CC_NUMBER}",
+            "xpath": "//input[@name='card.number']",
+            "wait": 1
+          }
+        ]
+    }
+}
